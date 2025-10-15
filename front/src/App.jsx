@@ -3,8 +3,9 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Logout from './pages/Logout'
 import Register from './pages/Register'
-
-
+import AnimeDetail from './pages/AnimeDetail'
+import ProtectedRoute from './components/ProtectedRoute'
+import RedirectIfAuthenticated from './components/RedirectIfAuthenticated'
 
 
 function App() {
@@ -12,9 +13,26 @@ function App() {
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home></Home>}></Route>
-      <Route path='/login' element={<Login></Login>}></Route>
-      <Route path='/logout' element={<Logout></Logout>}></Route>
-      <Route path='/register' element={<Register></Register>}></Route>
+      <Route path='/login' element={
+        <RedirectIfAuthenticated>
+          <Login></Login>
+        </RedirectIfAuthenticated>
+        }></Route>
+      <Route path='/logout' element={
+        <ProtectedRoute>
+          <Logout></Logout>
+        </ProtectedRoute>
+        }></Route>
+      <Route path='/register' element={
+        <RedirectIfAuthenticated>
+          <Register></Register>
+        </RedirectIfAuthenticated>
+        }></Route>
+        <Route path='/anime/:id' element={
+          <ProtectedRoute>
+            <AnimeDetail></AnimeDetail>
+          </ProtectedRoute>
+          }></Route>
     </Routes>
   </BrowserRouter>)
 }
