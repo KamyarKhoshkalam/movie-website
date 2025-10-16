@@ -1,10 +1,10 @@
-import LoginComponent from "../components/LoginComponent"
-import NavigationBar from "../components/NavigationBar"
-import { Navigate } from "react-router-dom"
-import RedirectIfAuthenticated from "../components/RedirectIfAuthenticated"
-import RegisterComponent from "../components/RegisterComponent"
+import LoginComponent from '../components/LoginComponent'
+import NavigationBar from '../components/NavigationBar'
+import { Navigate } from 'react-router-dom'
+import RedirectIfAuthenticated from '../components/RedirectIfAuthenticated'
+import RegisterComponent from '../components/RegisterComponent'
 
-const Register = ()=>{
+const Register = () => {
   return (
     <div>
       <RedirectIfAuthenticated>

@@ -1,6 +1,6 @@
-import LoginComponent from "../components/LoginComponent"
+import LoginComponent from '../components/LoginComponent'
 
-const Login = ()=>{
+const Login = () => {
   return (
     <div>
       <LoginComponent></LoginComponent>

@@ -1,7 +1,7 @@
-import NavigationBar from "../components/NavigationBar"
-import FirstComponent from "../components/FirstComponent"
+import NavigationBar from '../components/NavigationBar'
+import FirstComponent from '../components/FirstComponent'
 
-const Home = ()=>{
+const Home = () => {
   return (
     <div>
       <NavigationBar></NavigationBar>
