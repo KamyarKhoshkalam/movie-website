@@ -1,25 +1,64 @@
 import { Link } from 'react-router-dom'
 import LogoYM from '../assets/LogoYM.png'
+import { FaChevronDown, FaChevronRight, FaMoon, FaSearch } from 'react-icons/fa'
 
 const NavigationBar = () => {
   return (
-    <div className="flex items-center justify-center">
-      <Link to="/">
-        <img src={LogoYM} alt="" />
-      </Link>
-      <div>
-        <ul className="flex">
-          <li>
-            <Link to="/">خانه</Link>
-          </li>
-          <li>
-            <ul>
-              <li>
-                <Link>انیمه</Link>
+    <div className="navbar absolute start-0 top-0 w-full bg-gradient-to-b from-black/40 to-transparent">
+      <div className="navbar__container container mx-auto">
+        <div className="navbar__items flex items-center justify-between">
+          <div class="navbar__start-items">
+            <Link to="/" className="pe-2">
+              <img src={LogoYM} alt="" />
+            </Link>
+            <ul className="navbar__links flex fill-[#F9F9F9] text-[#F9F9F9]">
+              <li className="navbar__links__link">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="navbar__links__link">
+                <Link to="#">
+                  Anime <FaChevronDown />
+                </Link>
+                <ul className="navbar__links__sublinks">
+                  <li className="navbar__links__link">
+                    <Link href="/MovieAnime">Movie Anime</Link>
+                  </li>
+                  <li className="navbar__links__link">
+                    <Link href="#">
+                      Series Anime
+                      <FaChevronRight />
+                    </Link>
+                    <ul className="navbar__links__sublinks__sublinks">
+                      <li className="navbar__links__link">
+                        <Link href="/A">A</Link>
+                      </li>
+                      <li className="navbar__links__link">
+                        <Link href="/B">B</Link>
+                      </li>
+                      <li className="navbar__links__link">
+                        <Link href="/C">C</Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="navbar__links__link">
+                    <Link href="/TopRated">Top Rated</Link>
+                  </li>
+                </ul>
               </li>
             </ul>
-          </li>
-        </ul>
+          </div>
+          <div class="navbar__end-items">
+            <Link to={'/change-theme'} className="btn-link btn-link-icon">
+              <FaMoon />
+            </Link>
+            <Link to={'/search'} className="btn-link btn-link-icon">
+              <FaSearch />
+            </Link>
+            <Link to={'/account'} className="btn-link">
+              Account
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

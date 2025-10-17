@@ -1,0 +1,80 @@
+.navbar {
+  @apply z-40;
+  .navbar__items {
+    @apply py-2;
+
+    .navbar__end-items,
+    .navbar__start-items {
+      @apply flex items-center;
+    }
+  }
+  .navbar__links {
+    & > .navbar__links__link:hover {
+      & > a > svg {
+        @apply -scale-y-100;
+      }
+
+      & > .navbar__links__sublinks {
+        @apply block;
+      }
+    }
+    & > .navbar__links__link > a {
+      @apply mx-4;
+    }
+    .navbar__links__link {
+      @apply relative block;
+
+      &,
+      * {
+        @apply font-semibold transition-all duration-200;
+      }
+
+      a {
+        @apply flex items-center px-2 py-2;
+        svg {
+          @apply ms-2 h-4 w-4;
+        }
+      }
+
+      .navbar__links__sublinks {
+        @apply start-0 top-full rounded-xl;
+
+        &,
+        .navbar__links__sublinks__sublinks {
+          @apply absolute hidden min-w-[220px] bg-[#23242A] py-3;
+
+          a {
+            @apply flex justify-between py-3;
+          }
+
+          & .navbar__links__link:hover > a {
+            @apply bg-[#18191d];
+          }
+        }
+
+        .navbar__links__link:hover {
+          a svg {
+            @apply -scale-x-100;
+          }
+          .navbar__links__sublinks__sublinks {
+            @apply block;
+          }
+        }
+
+        .navbar__links__sublinks__sublinks {
+          @apply start-full top-0 rounded py-0;
+        }
+      }
+    }
+  }
+}
+
+.btn-link {
+  @apply me-2 grid place-items-center rounded-xl bg-[#DD3333]/80 fill-[#F9F9F9] px-3 py-3 font-semibold text-[#F9F9F9] transition-colors duration-200 hover:bg-red-900/70;
+  &.btn-link-icon {
+    @apply bg-gray-500/50 hover:bg-gray-700/70;
+  }
+  svg {
+    @apply mx-auto min-h-5 min-w-5;
+  }
+}
