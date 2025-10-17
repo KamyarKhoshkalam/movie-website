@@ -1,17 +1,30 @@
 import { Link } from 'react-router-dom'
 import LogoYM from '../assets/LogoYM.png'
 import { FaChevronDown, FaChevronRight, FaMoon, FaSearch } from 'react-icons/fa'
+import { HiMenu } from 'react-icons/hi'
+import { IoClose } from 'react-icons/io5'
+import { useState } from 'react'
 
 const NavigationBar = () => {
+  const [openMenu, setOpenMenu] = useState(false)
+  const toggleMenu = () => {
+    setOpenMenu(!openMenu)
+  }
   return (
-    <div className="navbar absolute start-0 top-0 w-full bg-gradient-to-b from-black/40 to-transparent">
-      <div className="navbar__container container mx-auto">
+    <div
+      className={`navbar absolute start-0 top-0 w-full bg-gradient-to-b from-black/40 to-transparent`}
+    >
+      <div className={`navbar__container container mx-auto ${openMenu && 'open-menu'}`}>
+        <span class="close-menu" onClick={() => setOpenMenu(false)}></span>
         <div className="navbar__items flex items-center justify-between">
           <div class="navbar__start-items">
+            <div className="navbar__menu-btn" onClick={toggleMenu}>
+              {openMenu ? <IoClose /> : <HiMenu />}
+            </div>
             <Link to="/" className="pe-2">
               <img src={LogoYM} alt="" />
             </Link>
-            <ul className="navbar__links flex fill-[#F9F9F9] text-[#F9F9F9]">
+            <ul className="navbar__links">
               <li className="navbar__links__link">
                 <Link to="/">Home</Link>
               </li>

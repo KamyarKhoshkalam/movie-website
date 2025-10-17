@@ -1,5 +1,6 @@
 .navbar {
   @apply z-40;
+
   .navbar__items {
     @apply py-2;
 
@@ -9,6 +10,7 @@
     }
   }
   .navbar__links {
+    @apply fill-[#F9F9F9] text-[#F9F9F9];
     & > .navbar__links__link:hover {
       & > a > svg {
         @apply -scale-y-100;
@@ -22,7 +24,7 @@
       @apply mx-4;
     }
     .navbar__links__link {
-      @apply relative block;
+      @apply relative block rounded-xl;
 
       &,
       * {
@@ -30,18 +32,21 @@
       }
 
       a {
-        @apply flex items-center px-2 py-2;
+        @apply flex items-center rounded-xl px-2 py-2;
         svg {
           @apply ms-2 h-4 w-4;
         }
       }
 
       .navbar__links__sublinks {
-        @apply start-0 top-full rounded-xl;
+        @apply relative start-0 top-full rounded-xl;
+        &::after {
+          @apply absolute start-5 top-0 h-3 w-3 -translate-y-1/2 rotate-45 rounded-xs bg-[#23242A] content-[""] max-xl:hidden;
+        }
 
         &,
         .navbar__links__sublinks__sublinks {
-          @apply absolute hidden min-w-[220px] bg-[#23242A] py-3;
+          @apply absolute hidden min-w-[220px] border-white/30 bg-[#23242A] py-3 xl:border-[1px];
 
           a {
             @apply flex justify-between py-3;
@@ -62,7 +67,7 @@
         }
 
         .navbar__links__sublinks__sublinks {
-          @apply start-full top-0 rounded py-0;
+          @apply top-0 rounded-xl py-0 xl:start-full;
         }
       }
     }
@@ -76,5 +81,68 @@
   }
   svg {
     @apply mx-auto min-h-5 min-w-5;
+  }
+}
+
+.navbar {
+  .navbar__container {
+    &,
+    * {
+      @apply transition-all duration-200;
+    }
+    .navbar__menu-btn {
+      @apply hidden cursor-pointer fill-[#f9f9f9] px-2 py-2 transition-transform duration-200 hover:scale-110 max-xl:block;
+      svg {
+        @apply mx-auto h-7 w-7 fill-[#f9f9f9];
+      }
+    }
+
+    .navbar__links {
+      @apply flex max-xl:hidden max-xl:rounded-xl max-xl:bg-[#23242A]/50;
+    }
+
+    &.open-menu {
+      @apply max-xl:relative max-xl:block;
+      .navbar__menu-btn {
+        @apply z-40;
+      }
+      .close-menu {
+        @apply start-0 top-[0px] hidden h-screen w-screen bg-gradient-to-b from-transparent to-black to-90% backdrop-blur-sm content-[""] max-xl:fixed max-xl:block;
+      }
+      .navbar__links {
+        @apply max-xl:absolute max-xl:top-[66px] max-xl:block max-xl:w-1/2 max-xl:bg-transparent;
+        & > li {
+          &:hover > a {
+            @apply max-xl:bg-[#18191d];
+          }
+          & > a {
+            @apply py-3 text-center max-xl:mx-0 max-xl:w-full max-xl:justify-between max-xl:bg-[#23242A];
+            & > svg {
+              @apply max-xl:-rotate-90;
+            }
+          }
+        }
+        & > li {
+          @apply max-xl:my-[2px];
+          & > .navbar__links__sublinks {
+            @apply start-full max-xl:top-0 max-xl:w-full max-xl:bg-transparent max-xl:py-0;
+
+            li {
+              @apply mb-[2px] max-xl:bg-[#23242A];
+            }
+            .navbar__links__sublinks__sublinks {
+              @apply max-xl:top-1/2 max-xl:right-full max-xl:w-full max-xl:-translate-y-1/2 max-xl:bg-transparent;
+              li,
+              a {
+                @apply max-xl:w-full;
+              }
+              a {
+                @apply bg-[#333438];
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
