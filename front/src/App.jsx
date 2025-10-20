@@ -10,41 +10,59 @@ import RedirectIfAuthenticated from './components/RedirectIfAuthenticated'
 function App() {
   return (
     <BrowserRouter>
+      {/* *** Routes *** */}
+
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
+        {/* *** Home Route *** */}
+
+        <Route path="/" element={<Home></Home>} />
+
+        {/* *** Login Route *** */}
+
         <Route
           path="/login"
           element={
             <RedirectIfAuthenticated>
-              <Login></Login>
+              <Login />
             </RedirectIfAuthenticated>
           }
-        ></Route>
+        />
+
+        {/* *** Logout Route ***  */}
+
         <Route
           path="/logout"
           element={
             <ProtectedRoute>
-              <Logout></Logout>
+              <Logout />
             </ProtectedRoute>
           }
-        ></Route>
+        />
+
+        {/* *** Register Route *** */}
+
         <Route
           path="/register"
           element={
             <RedirectIfAuthenticated>
-              <Register></Register>
+              <Register />
             </RedirectIfAuthenticated>
           }
-        ></Route>
+        />
+
+        {/* *** Anime Page Route *** */}
+
         <Route
           path="/anime/:id"
           element={
             <ProtectedRoute>
-              <AnimeDetail></AnimeDetail>
+              <AnimeDetail />
             </ProtectedRoute>
           }
-        ></Route>
+        />
       </Routes>
+
+      {/* *** End Routes*** */}
     </BrowserRouter>
   )
 }

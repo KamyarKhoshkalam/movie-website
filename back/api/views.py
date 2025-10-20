@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets,generics
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .serializers import UserSerializer,RegisterSerializer
+
+User = get_user_model()
 
 # Create your views here.
 

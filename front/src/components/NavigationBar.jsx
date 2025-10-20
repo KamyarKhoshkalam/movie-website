@@ -15,9 +15,9 @@ const NavigationBar = () => {
       className={`navbar absolute start-0 top-0 w-full bg-gradient-to-b from-black/40 to-transparent`}
     >
       <div className={`navbar__container container mx-auto ${openMenu && 'open-menu'}`}>
-        <span class="close-menu" onClick={() => setOpenMenu(false)}></span>
+        <span className="close-menu" onClick={() => setOpenMenu(false)}></span>
         <div className="navbar__items flex items-center justify-between">
-          <div class="navbar__start-items">
+          <div className="navbar__start-items">
             <div className="navbar__menu-btn" onClick={toggleMenu}>
               {openMenu ? <IoClose /> : <HiMenu />}
             </div>
@@ -60,7 +60,7 @@ const NavigationBar = () => {
               </li>
             </ul>
           </div>
-          <div class="navbar__end-items">
+          <div className="navbar__end-items">
             <Link to={'/change-theme'} className="btn-link btn-link-icon">
               <FaMoon />
             </Link>

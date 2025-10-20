@@ -16,7 +16,7 @@ import { NavLink } from 'react-router-dom'
 
 const LoginComponent = () => {
   // *** Variables ***
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [redirect, setRedirect] = useState(false)
@@ -26,11 +26,11 @@ const LoginComponent = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [formError, setFormError] = useState()
 
-  // *** Post Username and Password if they were correct ***
-  const handleSubmit = async (username, password, e) => {
+  // *** Post email and Password if they were correct ***
+  const handleSubmit = async (email, password, e) => {
     e.preventDefault()
-    if (!username.trim() || !password.trim()) {
-      setFormError('Username/email and password cannot be empty')
+    if (!email.trim() || !password.trim()) {
+      setFormError('email and password cannot be empty')
       return
     } else {
       setFormError()
@@ -40,7 +40,7 @@ const LoginComponent = () => {
       try {
         setLoading(true)
         const res = await privateApi.post('token/', {
-          username,
+          email,
           password,
         })
         localStorage.setItem('access', res.data.access)
@@ -70,26 +70,26 @@ const LoginComponent = () => {
         method="POST"
         className="m-auto flex w-2/5 flex-col justify-center gap-6 px-20"
         onSubmit={(e) => {
-          handleSubmit(username, password, e)
+          handleSubmit(email, password, e)
         }}
       >
         <h2 className="text-2xl">Login to YekMovies</h2>
 
-        {/* *** Username or Email Field *** */}
+        {/* *** email or Email Field *** */}
 
         <div className="relative rounded-md border-[2px] border-gray-600 p-2 transition-colors duration-300 focus-within:border-red-500">
           <label
-            htmlFor="username"
+            htmlFor="email"
             className="absolute top-[-13px] bg-white px-2 text-sm text-gray-600"
           >
-            username
+            email
           </label>
           <input
             type="text"
-            name="username"
+            name="email"
             className="w-full border-none outline-none"
             onChange={(e) => {
-              setUsername(e.target.value)
+              setEmail(e.target.value)
             }}
           />
         </div>

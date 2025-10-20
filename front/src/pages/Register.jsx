@@ -7,10 +7,7 @@ import RegisterComponent from '../components/RegisterComponent'
 const Register = () => {
   return (
     <div>
-      <RedirectIfAuthenticated>
-        <NavigationBar></NavigationBar>
-        <RegisterComponent></RegisterComponent>
-      </RedirectIfAuthenticated>
+      <RegisterComponent></RegisterComponent>
     </div>
   )
 }
