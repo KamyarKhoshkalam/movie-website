@@ -12,7 +12,7 @@ const NavigationBar = () => {
   }
   return (
     <div
-      className={`navbar absolute start-0 top-0 w-full bg-gradient-to-b from-black/40 to-transparent`}
+      className={`navbar start-0 top-0 w-full bg-[#23242a] bg-gradient-to-b from-black/40 to-transparent`}
     >
       <div className={`navbar__container container mx-auto ${openMenu && 'open-menu'}`}>
         <span className="close-menu" onClick={() => setOpenMenu(false)}></span>

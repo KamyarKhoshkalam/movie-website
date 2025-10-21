@@ -1,25 +1,13 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import AnimeDetailComponent1 from './AnimeDetailComponent1'
+import AnimeDetailComponent2 from './AnimeDetailComponent2'
 
 const AnimeDetailComponent = () => {
-  const { id } = useParams()
-  const [loading, setLoading] = useState(true)
-  const [detail, setDetail] = useState({})
-
-  useEffect(() => {
-    axios.get(`https://api.jikan.moe/v4/anime/${id}/full`).then((res) => {
-      console.log(res.data.data)
-      setDetail(res.data.data)
-      setLoading(false)
-    })
-  }, [id])
-
-  if (loading) {
-    return <p>Loading</p>
-  }
-
-  return detail.title
+  return (
+    <div className="bg-[#1b1c22]">
+      <AnimeDetailComponent1 />
+      <AnimeDetailComponent2 />
+    </div>
+  )
 }
 
 export default AnimeDetailComponent
