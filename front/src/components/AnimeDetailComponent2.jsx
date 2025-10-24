@@ -8,7 +8,6 @@ import axios from 'axios'
 const AnimeDetailComponent2 = () => {
   const { id } = useParams()
   const [loading, setLoading] = useState(true)
-  const [relationLoading, setRelationLoading] = useState(true)
   const [detail, setDetail] = useState({})
   const [relations, setRelations] = useState([])
 
@@ -24,7 +23,6 @@ const AnimeDetailComponent2 = () => {
     if (!detail.relations) return
 
     const fetchRelations = async () => {
-      setRelationLoading(true)
       try {
         const animeEntries = detail.relations
           .flatMap((r) => r.entry)
@@ -41,15 +39,13 @@ const AnimeDetailComponent2 = () => {
         setRelations(list)
       } catch (error) {
         console.error('Error fetching related anime:', error)
-      } finally {
-        setRelationLoading(false)
       }
     }
 
     fetchRelations()
-  }, [detail])
+  }, [detail.relations])
 
-  if (loading || relationLoading) {
+  if (loading) {
     return <p>Loading</p>
   }
 

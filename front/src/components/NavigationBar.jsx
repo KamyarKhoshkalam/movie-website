@@ -3,13 +3,32 @@ import LogoYM from '../assets/LogoYM.png'
 import { FaChevronDown, FaChevronRight, FaMoon, FaSearch } from 'react-icons/fa'
 import { HiMenu } from 'react-icons/hi'
 import { IoClose } from 'react-icons/io5'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import privateApi from '../../privateApi'
 
 const NavigationBar = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const toggleMenu = () => {
     setOpenMenu(!openMenu)
   }
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState([])
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await privateApi.get('/me')
+        setUser(res.data)
+        setLoggedIn(true)
+        console.log('Fetched user:', res.data)
+      } catch (err) {
+        console.error(err)
+        setLoggedIn(false)
+      }
+    }
+    getUser()
+  }, [])
+
   return (
     <div
       className={`navbar start-0 top-0 w-full bg-[#23242a] bg-gradient-to-b from-black/40 to-transparent`}
@@ -67,8 +86,12 @@ const NavigationBar = () => {
             <Link to={'/search'} className="btn-link btn-link-icon">
               <FaSearch />
             </Link>
-            <Link to={'/account'} className="btn-link">
-              Account
+            <Link to={'/account'} className="btn-link flex items-center justify-center">
+              {loggedIn ? (
+                <img src={user.photo} className="h-10 w-10 rounded-full object-cover" alt="" />
+              ) : (
+                <p>Account</p>
+              )}
             </Link>
           </div>
         </div>

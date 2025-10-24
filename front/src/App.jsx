@@ -60,6 +60,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* *** Acount *** */}
+
+        <Route path="/account" element={<ProtectedRoute></ProtectedRoute>} />
       </Routes>
 
       {/* *** End Routes*** */}
