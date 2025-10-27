@@ -15,7 +15,6 @@ const AnimeDetailComponent2 = () => {
     axios.get(`https://api.jikan.moe/v4/anime/${id}/full`).then((res) => {
       console.log(res.data.data)
       setDetail(res.data.data)
-      setLoading(false)
     })
   }, [id])
 
@@ -37,6 +36,7 @@ const AnimeDetailComponent2 = () => {
         const list = results.map((res) => res.data.data)
 
         setRelations(list)
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching related anime:', error)
       }
@@ -52,9 +52,9 @@ const AnimeDetailComponent2 = () => {
   return (
     // *** component ***
 
-    <div className="mx-auto flex flex-col rounded-xl pt-10 min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1250px]">
+    <div className="mx-auto flex flex-col rounded-xl px-[15px] pt-10 min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1250px]">
       {/* *** anime detail *** */}
-      <div className="mb-5 flex flex-col gap-4 rounded-lg bg-[#23242a] p-4 pt-8 pb-20">
+      <div className="mb-5 flex flex-col gap-4 rounded-lg bg-[#23242a] px-4 pt-8 pb-20">
         <h2 className="text-2xl text-gray-300">Related</h2>
         <hr className="text-gray-400" />
         <div className="scrollbar-hide flex gap-3 overflow-x-auto p-2">

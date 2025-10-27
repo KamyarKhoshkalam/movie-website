@@ -34,7 +34,7 @@ const FirstComponent = () => {
   }
 
   return (
-    <div className="flex h-[620px] items-center justify-between bg-black text-white">
+    <div className="flex h-[550px] items-center justify-between bg-black text-white md:h-[620px]">
       <div className="relative flex h-full w-full p-7 md:w-2/3">
         <img
           src={anime[swiperIndex].images.jpg.large_image_url}
@@ -73,7 +73,7 @@ const FirstComponent = () => {
             setSwiperIndex(swiper.realIndex)
           }}
           loop={true}
-          autoplay={{ disableOnInteraction: false, delay: 2000, pauseOnMouseEnter: true }}
+          autoplay={{ disableOnInteraction: false, delay: 2500, pauseOnMouseEnter: true }}
           spaceBetween={5}
         >
           {anime.map((element) => (
