@@ -27,18 +27,20 @@ const AnimeDetailComponent2 = () => {
           .flatMap((r) => r.entry)
           .filter((entry) => entry.type === 'anime')
 
-        const promises = animeEntries.map((entry) =>
-          axios.get(`https://api.jikan.moe/v4/anime/${entry.mal_id}/full`)
-        )
+        const results = []
 
-        const results = await Promise.all(promises)
+        for (const entry of animeEntries) {
+          const res = await axios.get(`https://api.jikan.moe/v4/anime/${entry.mal_id}/full`)
+          results.push(res.data.data)
 
-        const list = results.map((res) => res.data.data)
+          await new Promise((resolve) => setTimeout(resolve, 750))
+        }
 
-        setRelations(list)
+        setRelations(results)
         setLoading(false)
       } catch (error) {
         console.error('Error fetching related anime:', error)
+        setLoading(false)
       }
     }
 
