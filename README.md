@@ -6,6 +6,27 @@ A full-stack website built with **Django** and **React**, cloning the [YekMoviez
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+
+### Homepage
+
+<img src="screenshots/homepage1.png" alt="Homepage" width="800"/>
+<img src="screenshots/homepage2.png" alt="Homepage" width="800"/>
+
+### Anime Detail
+
+<img src="screenshots/animedetail1.png" alt="Search Feature" width="800"/>
+<img src="screenshots/animedetail2.png" alt="Search Feature" width="800"/>
+
+### User Profile
+
+<img src="screenshots/account.png" alt="User Profile" width="800"/>
+<img src="screenshots/signin.png" alt="User Profile" width="800"/>
+
+</div>
+
 ## Features
 
 ### Backend (Django + DRF)
