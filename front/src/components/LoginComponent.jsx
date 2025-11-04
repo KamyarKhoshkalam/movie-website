@@ -111,7 +111,10 @@ const LoginComponent = () => {
               setPassword(e.target.value)
             }}
           />
-          <button className="absolute top-0 right-0 flex h-full cursor-pointer items-center justify-center px-2">
+          <button
+            type="button"
+            className="absolute top-0 right-0 flex h-full cursor-pointer items-center justify-center px-2"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               onClick={() => {

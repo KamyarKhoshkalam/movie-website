@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import AnimeDetail from './pages/AnimeDetail'
 import ProtectedRoute from './components/ProtectedRoute'
 import RedirectIfAuthenticated from './components/RedirectIfAuthenticated'
+import Account from './pages/Acoount'
 
 function App() {
   return (
@@ -63,7 +64,14 @@ function App() {
 
         {/* *** Acount *** */}
 
-        <Route path="/account" element={<ProtectedRoute></ProtectedRoute>} />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       {/* *** End Routes*** */}

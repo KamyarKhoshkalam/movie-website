@@ -79,7 +79,7 @@ const FirstComponent = () => {
           {anime.map((element) => (
             <SwiperSlide key={element.mal_id}>
               <div className="flex flex-col items-center rounded-xl p-2 shadow-md transition-transform duration-300 hover:scale-105">
-                <NavLink to={`http://localhost:5173/anime/${element.mal_id}`}>
+                <NavLink to={`/anime/${element.mal_id}`}>
                   <div className="relative flex h-auto rounded-full">
                     <img
                       src={element.images.jpg.image_url}
