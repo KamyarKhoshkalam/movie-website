@@ -1,8 +1,6 @@
 # YekMoviez Clone
 
-A full-stack website built with **Django** and **React**, cloning the [YekMoviez](https://yekmoviez.com) site. This platform allows users to browse movies, series, and anime. Developed for **testing and improving web development skills**.
-
-**Note:** Approximately 20% of the code was assisted by ChatGPT.
+A full-stack movie streaming platform built with **Django** and **React**, inspired by [YekMoviez](https://yekmoviez.com). This platform allows users to browse movies, series, and anime with a modern, responsive interface.
 
 ---
 
@@ -27,19 +25,22 @@ A full-stack website built with **Django** and **React**, cloning the [YekMoviez
 
 </div>
 
+---
+
 ## Features
 
 ### Backend (Django + DRF)
 
 -   User authentication using **JWT tokens**
 -   Custom user model with admin access
--   APIs to get user details and update profile
--   PostgreSQL database (can switch to SQLite for testing)
+-   REST APIs for user management and profile updates
+-   PostgreSQL database (configurable to SQLite for development)
+-   **Note:** CAPTCHA implementation is for demonstration purposes only
 
 ### Frontend (React + Tailwind + Swiper)
 
--   Displays **top 5 animes ordered by score** on the homepage
--   Anime search powered by **Jikan API** (shows top 3 results by score)
+-   Displays **top animes ordered by score** on the homepage
+-   Anime search powered by **Jikan API** (shows top results by score)
 -   Responsive UI with **Tailwind CSS**
 -   Swiper carousel for featured anime
 -   Axios for API requests
@@ -61,8 +62,8 @@ A full-stack website built with **Django** and **React**, cloning the [YekMoviez
 1. **Clone the repository**
 
     ```bash
-    git clone <your-repo-url>
-    cd back
+    git clone https://github.com/KamyarKhoshkalam/movie-website.git
+    cd backend
     ```
 
 2. **Create and activate a virtual environment**
@@ -79,15 +80,31 @@ A full-stack website built with **Django** and **React**, cloning the [YekMoviez
     pip install -r requirements.txt
     ```
 
-4. **Create `.env` file** in the backend root:
+4. **Database Configuration**
+
+    **Option 1: PostgreSQL (Default)**
 
     ```env
     DEBUG=True
-    DATABASE_NAME=<your-db-name>
-    DATABASE_USER=<your-db-user>
-    DATABASE_PASSWORD=<your-db-password>
-    SECRET_KEY=<your-secret-key>
+    DATABASE_NAME=yekmoviez_db
+    DATABASE_USER=your_username
+    DATABASE_PASSWORD=your_password
+    SECRET_KEY=your-secret-key-here
     ```
+
+    **Option 2: SQLite (Easier for testing)**
+
+    ```python
+    # In backend/movie_api/settings.py, change DATABASES to:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+        }
+    }
+    ```
+
+    _No .env file needed for SQLite_
 
 5. **Run migrations**
 
@@ -114,7 +131,7 @@ A full-stack website built with **Django** and **React**, cloning the [YekMoviez
 1. **Navigate to frontend folder**
 
     ```bash
-    cd ../front
+    cd ../frontend
     ```
 
 2. **Install dependencies**
@@ -133,49 +150,78 @@ A full-stack website built with **Django** and **React**, cloning the [YekMoviez
 
 **Notes:**
 
--   Backend should be running at `http://127.0.0.1:8000` for API requests
--   Frontend communicates with backend via JWT for authentication
+-   Backend runs at `http://127.0.0.1:8000`
+-   Frontend communicates with backend via JWT authentication
+-   CAPTCHA verification is simulated for UI demonstration
 
 ---
 
 ## Usage
 
--   Browse movies, series, and anime
--   Search for anime using the search bar (top 3 results displayed)
--   Admin can manage users and view custom user data
--   Top-rated anime carousel displayed on the homepage
+-   Browse featured anime on the homepage carousel
+-   Search for anime using the search functionality
+-   Register and login with user authentication
+-   Update user profile information
+-   **Note:** CAPTCHA validation is simulated for UI purposes
 
 ---
 
-## Backend Dependencies (`requirements.txt`)
+## Backend Dependencies
 
 ```
-asgiref==3.10.0
-Django==5.2.7
-django-cors-headers==4.9.0
-django-environ==0.12.0
-djangorestframework==3.16.1
-djangorestframework_simplejwt==5.5.1
-pillow==12.0.0
-psycopg2==2.9.10
-PyJWT==2.10.1
-sqlparse==0.5.3
-tzdata==2025.2
+Django
+djangorestframework
+django-cors-headers
+PyJWT
 ```
 
-## Frontend Dependencies (`package.json`)
+## Frontend Dependencies
 
--   React, React DOM, Tailwind CSS, Swiper, Axios, JWT-decode, React Router DOM, and others
+-   React, React DOM, Tailwind CSS, Swiper, Axios, React Router DOM
+
+---
+
+## Project Structure
+
+```
+movie-website/
+├── backend/                 # Django backend
+│   ├── movie_api/          # Django project
+│   ├── api/                # Django app (users, movies)
+│   ├── manage.py
+│   └── requirements.txt
+├── frontend/               # React frontend
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── pages/          # Page components
+│   │   └── services/       # API services
+│   ├── package.json
+│   └── vite.config.js
+├── screenshots/            # Project screenshots
+│   ├── homepage.png
+│   ├── search.png
+│   └── profile.png
+└── README.md
+```
+
+---
+
+## Important Notes
+
+-   This project is for **educational and portfolio purposes**
+-   CAPTCHA implementation is **simulated** and not functional
+-   All movie/anime data is sourced from external APIs
+-   User data is handled securely with JWT authentication
+-   **SQLite can be used instead of PostgreSQL** for easier testing and development
 
 ---
 
 ## Contributing
 
--   Contributions are welcome!
--   Feel free to fork the repository and create pull requests
+Contributions are welcome! Feel free to fork the repository and submit pull requests.
 
 ---
 
 ## License
 
-This project is for **educational purposes** and personal testing.
+This project is developed for **educational purposes** and personal portfolio demonstration.
